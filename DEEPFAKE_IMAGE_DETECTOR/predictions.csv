@@ -1,0 +1,19 @@
+Filename,Prediction,Confidence
+generated-image-cm6bvq8sh002acn3vw8guq6tc.png,FAKE,0.98
+generated-image-cm6bvrxvl006113nuo6sj8s0b - Copy.png,FAKE,0.7
+generated-image-cm6bvrxvl006113nuo6sj8s0b.png,FAKE,0.7
+IMG_4448.png,REAL,0.73
+IMG_4450.png,FAKE,0.53
+IMG_4451.png,FAKE,0.93
+IMG_4452.png,FAKE,0.97
+IMG_4454.png,FAKE,0.99
+IMG_8720.jpeg,REAL,0.61
+IMG_8727.jpeg,REAL,0.79
+IMG_8728.jpeg,REAL,0.85
+IMG_8736.jpeg,REAL,0.78
+IMG_9739.jpeg,REAL,0.85
+IMG_9739_jpg.jpeg,REAL,0.88
+IMG_9740.jpeg,REAL,0.92
+IMG_9798.jpeg,REAL,0.78
+IMG_9820.jpeg,REAL,0.67
+IMG_9824.jpeg,REAL,0.81
