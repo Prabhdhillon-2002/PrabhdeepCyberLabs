@@ -1,0 +1,58 @@
+# 1. Install Splunk Enterprise
+1. Download Splunk Enterprise Free Trial from:
+   https://www.splunk.com/en_us/download/splunk-enterprise.html
+2. Install on Windows 10 using the 64-bit .msi installer.
+3. Set an admin username and password when prompted.
+4. After installation, open your browser and go to:
+   http://localhost:8000
+
+# 2. Project Folder Structure
+├── Real-time threat detection with Splunk on Windows\
+│
+├── logs\
+│   ├── apache_access.log           # Simulated Apache access logs
+│   └── windows_events.csv          # Simulated Windows failed logins
+│
+├── detection_queries\
+│   ├── brute_force_search.spl      # Detects repeated login attempts
+│   ├── port_scan_search.spl        # Detects potential port scanning
+│   └── windows_failed_logins.spl   # Detects excessive failed logins
+│
+├── log_stream_writer.py            # Continuously simulates new log data to apache_access.logs and windows_events.csv
+├── threats_dashboard.png           # Screenshot of the live Splunk dashboard
+├── README.md                       # Full project overview and explanation
+└── setup_instructions.txt  
+
+# 3. Configure Data Inputs in Splunk
+1. In Splunk → Click **Settings > Add Data > Upload**.
+2. Upload both files:
+   - apache_access.log > set sourcetype = access_combined
+   - windows_events.csv > set sourcetype = csv
+3. Set **index = security** for both files.
+4. Verify ingestion using: index=security
+
+# 4. Run Real-Time Log Simulation
+1. Open Command Prompt or PowerShell.
+2. Navigate to project folder, and run: python log_stream_writer.py
+3. This script will continuously append new log entries to apache_access.log and windows_events.csv.
+4. Splunk will auto-detect and index new data in real-time.
+
+# 5. Create and Save Detection Queries
+1. Use the SPL (Search Processing Language) queries in **"detection_queries"** in Splunk Search.
+2. Save each as a Report:
+- Brute Force Detection
+- Port Scan Detection
+- Windows Failed Logins
+
+# 6. Create the Dashboard
+1. Go to **Search & Reporting -> Dashboards -> Create New Dashboard**.
+2. Title: **Threat Dashboard**
+3. Add Panels -> From Report:
+   - Brute Force Detection
+   - Detecting Port Scanning
+   - Excessive Windows Failed Logins
+4. Set auto-refresh to 30 seconds.
+5. Save your layout.
+
+# 7. Verify Dashboard
+Ensure all panels update in real-time as new logs are simulated.

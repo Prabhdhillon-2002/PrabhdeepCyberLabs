@@ -1,0 +1,5 @@
+# Detect Brute Force Login event
+index=main sourcetype="access_combined"
+| regex uri_path="/(login|admin)"
+| stats count by clientip, uri_path
+| where count > 3

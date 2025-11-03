@@ -1,0 +1,4 @@
+index=security sourcetype="csv"
+| search EventCode=4625
+| stats count by Ip_Address, Account_Name
+| where count > 2
