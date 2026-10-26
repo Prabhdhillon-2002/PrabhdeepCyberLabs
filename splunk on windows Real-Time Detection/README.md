@@ -1,7 +1,7 @@
 # Overview
 
 This project demonstrates how to build a **real-time cybersecurity threat detection dashboard** using **Splunk Enterprise**.  
-It simulates real-world network and Windows event logs, detects suspicious activities such as **brute-force attacks, port scanning, and failed logins**, and visualizes them like a real **Security Operations Center (SOC)** dashboard.
+It simulates real-world network and Windows event logs, detects suspicious activities such as **brute-force attacks, web path enumeration, and failed logins**, and visualizes them like a real **Security Operations Center (SOC)** dashboard.
 
 # How It Works
 
@@ -14,7 +14,7 @@ It simulates real-world network and Windows event logs, detects suspicious activ
 3. **Detection Queries (SPL):**  
    Three detection rules analyze patterns of suspicious activity:
    - Brute Force Logins  
-   - Port Scanning  
+   - Web Path Enumeration (one IP probing many different URLs)  
    - Excessive Windows Logon Failures
 
 4. **Visualization:**  
@@ -30,7 +30,7 @@ Real-time-threat-detection/
 │
 ├── detection_queries/
 │ ├── brute_force_search.spl
-│ ├── port_scan_search.spl
+│ ├── web_path_enumeration.spl
 │ └── windows_failed_logins.spl
 │
 ├── log_stream_writer.py
@@ -65,7 +65,7 @@ Go to Search & Reporting → Dashboards → Create New Dashboard
 Title: Threat Dashboard
 Add three panels using the saved reports:
 - Brute Force Detection (Table)
-- Detecting Port Scanning (Bar Chart)
+- Web Path Enumeration (Bar Chart)
 - Excessive Windows Failed Logins (Table)
 Set dashboard auto-refresh to 30 seconds.
 
@@ -82,7 +82,7 @@ Set dashboard auto-refresh to 30 seconds.
 
 - Built a real-time SOC dashboard from scratch.
 - Learned how to detect and visualize live threats using Splunk SPL.
-- Simulated real-world attack scenarios (brute-force, scanning, failed logins).
+- Simulated real-world attack scenarios (brute-force, web enumeration, failed logins).
 - Gained experience in log analysis, correlation, and data visualization.
 
 # Expansion: Sysmon and Advanced Detection
