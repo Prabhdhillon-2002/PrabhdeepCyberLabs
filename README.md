@@ -12,7 +12,7 @@ Hands-on security projects covering **SOC monitoring, detection engineering, net
 
 | Project | What it does | Tools |
 |---|---|---|
-| [**Splunk Real-Time Threat Detection**](splunk%20on%20windows%20Real-Time%20Detection) | Streams simulated Apache and Windows event logs into Splunk, detects brute-force logins, port-scan-like behavior, and repeated failed Windows logons (Event ID 4625), and shows them on a live SOC dashboard. | Splunk Enterprise, SPL, Python |
+| [**Splunk Real-Time Threat Detection**](splunk%20on%20windows%20Real-Time%20Detection) | Streams simulated Apache and Windows event logs into Splunk, detects brute-force logins, web path enumeration, and repeated failed Windows logons (Event ID 4625), and shows them on a live SOC dashboard. | Splunk Enterprise, SPL, Python |
 | [**Network Intrusion Detection System (NIDS)**](NIDS) | Trains a Random Forest classifier on network flow data to label traffic as normal, DDoS, port scan, or anomaly, then watches a live traffic feed and raises color-coded alerts when thresholds are crossed. | Python, scikit-learn, pandas |
 | [**Multi-Stage Phishing Incident Case Study**](SOC%20analyst%20LAB) | Tier 1 SOC write-up of a phishing campaign using a PowerShell loader, Pastebin payloads, and a Telegram C2 fallback: triage, containment, memory capture, IOC hunting, and lessons learned. *(Fictional scenario for portfolio practice.)* | SIEM, EDR, incident response |
 | [**Real-Time Log Anomaly Detection**](realtime_monitor) | Continuously monitors a streaming log file and flags abnormal system behavior with an Isolation Forest model, mimicking how a SOC watches logs around the clock. | Python, scikit-learn, Colorama |
@@ -26,7 +26,7 @@ Hands-on security projects covering **SOC monitoring, detection engineering, net
 ## Skills demonstrated
 
 - **SOC operations:** log ingestion, alert triage, detection rules, dashboards, incident write-ups
-- **Detection engineering:** SPL searches for brute force, scanning, and failed-logon patterns; Windows Event ID 4625
+- **Detection engineering:** SPL searches for brute force, web path enumeration, and failed-logon patterns; Windows Event ID 4625
 - **Incident response:** containment, memory capture, IOC extraction, enterprise hunting
 - **Network security:** traffic classification, DDoS and port-scan detection
 - **Security automation:** Python scripts for log simulation, monitoring, and alerting
