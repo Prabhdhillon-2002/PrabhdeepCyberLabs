@@ -1,62 +1,48 @@
 # Deepfake Image Detector
 - A Convolutional Neural Network (CNN)-based deepfake detector that distinguishes between **real** (authentic) and **fake** (AI-generated) images.  
-- Built for cybersecurity awareness and AI safety, this project leverages image classification to help flag manipulated content.
+- Built for cybersecurity awareness and AI safety, this project uses image classification to help flag manipulated content.
 
 # Overview
-- Trained on a small dataset of 18 labeled images (10 authentic, 8 synthetic), the model is capable of:
-- Determining whether an individual image is AI-generated.
-- Performing batch predictions by scanning an entire folder of images at once.
-- Utilizing a live webcam feed to detect deepfakes in real time.
-- Displaying confidence scores alongside each prediction.
+Trained on a small dataset of 18 labeled images (10 authentic, 8 synthetic), the model can:
+- Determine whether an individual image is AI-generated.
+- Run batch predictions by scanning an entire folder of images at once.
+- Use a live webcam feed to detect deepfakes in real time.
+- Display confidence scores alongside each prediction.
 
 # Project Structure
-deepfake_image_detector/
-├── dataset/
-│ ├── real/ # Contains authentic face images
-│ └── fake/ # Contains AI-generated face images
-├── mix/ # (Optional) Directory for mixed images used in batch prediction
-├── train_model.py # Script to train and save the VGG16-based model
-├── test_model.py # Used for predicting a single image or performing batch predictions
-├── webcam_detector.py # Enables real-time deepfake detection via webcam
-├── saved_model.h5 # The trained Keras model file
-└── README.md # Project documentation (this file)
+```
+DEEPFAKE_IMAGE_DETECTOR/
+├── batch_predict.py   # Scans a folder of images and scores each one REAL or FAKE
+├── predictions.csv    # Sample output from a batch run
+└── README.md
+```
+
+> **Dataset not included.** The training images were removed from this repo for privacy. To run the project, add your own images to `dataset/real/` and `dataset/fake/` (public sets such as the Kaggle "140k Real and Fake Faces" dataset work well). The training script, webcam script, and saved model are not yet published.
 
 # Features
-- Binary Classification (REAL vs FAKE)
+- Binary classification (REAL vs FAKE)
 - CNN architecture: Conv2D, MaxPooling, Dense, Dropout
-- Transfer Learning with VGG16 for improved accuracy
-- Batch prediction support for entire folders
+- Transfer learning with VGG16 for improved accuracy
+- Batch prediction for entire folders
 - Live webcam detection (flags and saves fake frames)
-- Confidence Scores (e.g., REAL - 92%)
-- Clean and modular codebase
+- Confidence scores (e.g., REAL - 92%)
 
-# How it works
+# How it works (full pipeline)
 
-1. Train the model
-- Uses image augmentation and transfer learning with VGG16 to improve generalization.
-- bash python train_model.py
-- model is saved as saved_model.h5
-2. Predict a single image or Folder 
-- Open test_model.py and update the path: INPUT_PATH = "FOLDER/PICTURE"
-- Run it python test_model.py
-- Outputs prediction with confidence score for each image. 
-3. Live Webcam Detection
-- Predicts deepfakes in real time from your webcam.
-- python webcam_detector.py
-- If a fake frame is detected, it is saved to flagged_fakes/
+1. **Train the model** — image augmentation plus VGG16 transfer learning; the model is saved as `saved_model.h5`.
+2. **Batch predict** — set `INPUT_PATH` in `batch_predict.py` to a folder of images and run `python batch_predict.py`. Each image gets a REAL/FAKE label and confidence score, written to `predictions.csv`.
+3. **Live webcam detection** — scores webcam frames in real time and saves suspected fakes to `flagged_fakes/`.
 
 # Requirements
 
 - Python 3
-- Tensorflow / Keras
+- TensorFlow / Keras
 - NumPy
 - OpenCV
 - Pillow (PIL)
 
 # Notes
-- Dataset size is small; accuracy may vary. Consider using larger datasets for improved accuracy.
-- You can extend test_model.py to batch test multiple images and output predictions to CSV. 
+- The dataset is very small, so accuracy will vary. A larger public dataset would improve results.
 
 # Author
-Prabhdeep Dhillon
-Cybersecurity Analyst
+Prabhdeep Dhillon — CompTIA Security+ · B.S. Cybersecurity, DePaul University
