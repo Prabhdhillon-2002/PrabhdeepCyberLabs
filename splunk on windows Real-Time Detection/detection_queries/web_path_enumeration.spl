@@ -1,0 +1,4 @@
+```Web path enumeration: one client IP requesting many different URL paths (directory/content discovery, e.g. Gobuster or Nikto). Raise the threshold for real production traffic.```
+index=security sourcetype="access_combined"
+| stats dc(uri_path) AS unique_pages by clientip
+| where unique_pages > 2

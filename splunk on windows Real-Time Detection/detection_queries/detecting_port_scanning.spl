@@ -1,3 +1,0 @@
-index=security sourcetype="access_combined"
-| stats dc(uri_path) AS unique_pages by clientip
-| where unique_pages > 2
